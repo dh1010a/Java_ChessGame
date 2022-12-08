@@ -21,8 +21,8 @@ public class BoardButton extends JButton implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (board.get_BoardPiece(row, col).get_type() != "")
-			board.cal_road(row, col);
+		if (board.getBoardPiece(row, col).getType() != "")
+			board.calRoad(row, col);
 	}
 	
 }

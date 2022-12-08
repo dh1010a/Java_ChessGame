@@ -43,10 +43,10 @@ public class ChessBoard {
 			}
 	}
 		
-	public int[][] cal_road(int r, int c){
+	public int[][] calRoad(int r, int c){
 		
 	}
-	public BoardPiece get_BoardPiece(int r, int c) {
+	public BoardPiece getBoardPiece(int r, int c) {
 		return board[r][c];
-;	}
+	}
 }

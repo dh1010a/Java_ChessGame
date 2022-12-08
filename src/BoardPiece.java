@@ -7,10 +7,10 @@ public class BoardPiece {
 		type = s;
 	}
 	
-	public int get_playernum() {
+	public int getPlayerNum() {
 		return player;
 	}
-	public String get_type() {
+	public String getType() {
 		return type;
 	}
 	
