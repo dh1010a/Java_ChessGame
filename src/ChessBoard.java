@@ -40,6 +40,7 @@ public class ChessBoard {
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 8; j++) {
 				board[2+i][j] = new BoardPiece(0, piecename[6]);
+				
 			}
 	}
 		
