@@ -6,7 +6,7 @@ public class BoardButton extends JButton implements ActionListener{
 	private ChessFrame frame;
 	private final int row;
     private final int col;
-	public ChessButton(ChessBoard b,ChessFrame f, int row, int col) {
+	public BoardButton(ChessBoard b,ChessFrame f, int row, int col) {
 		board = b;
 		frame = f;
 		this.row = row;
@@ -21,8 +21,8 @@ public class BoardButton extends JButton implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (board.get_boardpeice(row, col).get_type != "")
-			board.get_road(int r, int c);
+		if (board.get_BoardPiece(row, col).get_type() != "")
+			board.cal_road(row, col);
 	}
 	
 }

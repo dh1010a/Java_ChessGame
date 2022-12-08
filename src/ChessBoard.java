@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class ChessBoard {
 	public BoardPiece[][] board = new BoardPiece[8][8];
-	public String[] piecename = new String[7];
+	public String[] piecename = {"King", "Queen", "Rooks", "Bishops", "Knights", "Pawns", ""};
 	Player p1;
 	Player p2;
 	Grave grave;
@@ -12,7 +12,6 @@ public class ChessBoard {
 		p1 = new Player(input, 1, true);
 		input = JOptionPane.showInputDialog("2번 플레이어의 이름을 입력해주세요");
 		p2 = new Player(input, 1, true);
-		piecename = {"King", "Queen", "Rooks", "Bishops", "Knights", "Pawns", ""};
 		createBoard();
 		
 	}
