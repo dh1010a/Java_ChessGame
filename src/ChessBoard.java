@@ -42,9 +42,16 @@ public class ChessBoard {
 				
 			}
 	}
+	public boolean isPossible(int r, int c) {
+		return r >= 0 && r < 8 && c >= 0 && c < 8 && board[r][c].getType().equals("");
+	}
 		
 	public int[][] calRoad(int r, int c){
-		
+		BoardPiece tmp = board[r][c];
+		int[][] road = new int[32][2];
+		if (tmp.getType().equals(piecename[0])) {
+			
+		}
 	}
 	public BoardPiece getBoardPiece(int r, int c) {
 		return board[r][c];
