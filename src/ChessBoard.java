@@ -10,6 +10,7 @@ public class ChessBoard {
 	public ChessBoard() {
 		String input = JOptionPane.showInputDialog("1번 플레이어의 이름을 입력해주세요");
 		p1 = new Player(input, 1, true);
+		input = JOptionPane.showInputDialog("2번 플레이어의 이름을 입력해주세요");
 		
 	}
 	public void createBoard() {
