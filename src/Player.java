@@ -1,7 +1,6 @@
 
 public class Player {
 	public int num;
-
 	public boolean turn;
 	private String name;
 	
