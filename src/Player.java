@@ -1,6 +1,7 @@
 
 public class Player {
 	public int num;
+
 	public boolean turn;
 	private String name;
 	
@@ -8,5 +9,12 @@ public class Player {
 		name = x;
 		num = n;
 		turn = b;
+	}
+	
+	public boolean is_turn() {
+		return turn;
+	}
+	public String get_name() {
+		return name;
 	}
 }
