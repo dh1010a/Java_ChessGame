@@ -14,8 +14,8 @@ public class ChessFrame extends JFrame {
         button_board = new BoardButton[8][8];
         Container c = getContentPane();
         JPanel p = new JPanel(new GridLayout(8,8)); 
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
                 button_board[row][col] = new BoardButton(board,this, row, col);
                 p.add(button_board[row][col]);
             }
