@@ -13,6 +13,6 @@ public class ChessBoard {
 		
 	}
 	public void createBoard() {
-		
+		int a;
 	}
 }
