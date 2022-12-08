@@ -13,4 +13,5 @@ public class BoardPiece {
 	public String get_type() {
 		return type;
 	}
+	
 }
