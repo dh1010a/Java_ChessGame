@@ -9,8 +9,12 @@ public class ChessFrame extends JFrame {
 	private BoardButton[][] button_board;
 	
 	public ChessFrame(ChessBoard b) {
-		ImageIcon img = new ImageIcon("./img/pngwing.png");
+		ImageIcon img = new ImageIcon("./img/horse.png");
+		Image im = img.getImage();
+		Image updateImg = im.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		ImageIcon Knight = new ImageIcon(updateImg);
 		ImageIcon background = new ImageIcon("./img/chessboard.png");
+		Color color = new Color(205,133,63);
 		board = b;
         button_board = new BoardButton[8][8];
         Container c = getContentPane();
@@ -21,8 +25,8 @@ public class ChessFrame extends JFrame {
                 button_board[row][col] = new BoardButton(board,this, row, col); // 버튼에는 색이 안들어감,,
                 p.add(button_board[row][col]);
                 if ((row + col) % 2 == 0){
-                    //button_board[row][col].setIcon(img);
-                    button_board[row][col].setBackground(Color.black);
+                    button_board[row][col].setIcon(Knight);
+                    button_board[row][col].setBackground(color);
 
                     //button_board[row][col].setOpaque(false);
                     //button_board[row][col].setContentAreaFilled(false);
