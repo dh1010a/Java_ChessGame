@@ -3,10 +3,12 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.awt.*;
 import javax.swing.ImageIcon;
+import javax.swing.BoxLayout;
 
 public class ChessFrame extends JFrame {
 	private ChessBoard board;
 	private BoardButton[][] button_board;
+	private Grave grave;
 	public int[][] road = new int[56][2];
 	public boolean show = true;
 	public int currow = 0;
@@ -35,8 +37,9 @@ public class ChessFrame extends JFrame {
 	Image im6 = img6.getImage();
 	Image updateImg6 = im6.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 	ImageIcon Queen = new ImageIcon(updateImg6);
-	public ChessFrame(ChessBoard b) {
+	public ChessFrame(ChessBoard b, Grave gv) {
 		board = b;
+		grave = gv;
 		
 		Color color = new Color(205,133,63);
 		board = b;
@@ -51,32 +54,21 @@ public class ChessFrame extends JFrame {
                 p.add(button_board[row][col]);
             }
     	}
-        /*button_board[0][0].setIcon(lock);
-        button_board[0][1].setIcon(knight);
-        button_board[0][2].setIcon(bs);
-        button_board[0][3].setIcon(king);
-        button_board[0][4].setIcon(queen);
-        button_board[0][5].setIcon(bs);
-        button_board[0][6].setIcon(knight);
-        button_board[0][7].setIcon(lock);
-        for(int i = 0; i < 8;i++) {
-        	button_board[1][i].setIcon(porn);
-        }
-        button_board[7][0].setIcon(lock);
-        button_board[7][1].setIcon(knight);
-        button_board[7][2].setIcon(bs);
-        button_board[7][3].setIcon(king);
-        button_board[7][4].setIcon(queen);
-        button_board[7][5].setIcon(bs);
-        button_board[7][6].setIcon(knight);
-        button_board[7][7].setIcon(lock);
-        for(int i = 0; i < 8;i++) {
-        	button_board[6][i].setIcon(porn);
+        JPanel g = new JPanel(new GridLayout(2,1));
+        g.setLayout(new BoxLayout(g,BoxLayout.Y_AXIS));
+        
+        JPanel g1 = new JPanel(new GridLayout(8,2));
+        JPanel g2 = new JPanel(new GridLayout(8,2));
+        /*for(int i = 0;i < 16;i++) {
+        	g1.add(grave.p1[i]);
         }*/
+        g.add(g1);
+        g.add(g2);
 
         c.add(p,BorderLayout.CENTER);
+        c.add(g, BorderLayout.EAST);
         setTitle("Chess Game");
-        setSize(400,400);
+        setSize(600,600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         update();

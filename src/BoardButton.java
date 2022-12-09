@@ -34,11 +34,15 @@ public class BoardButton extends JButton implements ActionListener{
 			frame.currow = row;
 			frame.curcol = col;
 		}
-		if (frame.show == true) {
+		if (frame.show == true && (board.getBoardPiece(row, col).getType() != "" || board.getBoardPiece(row, col).getPlayerNum() != board.turn)) {
 			for(int i = 0;i < 56;i++) {
-				if (frame.road[i][0] == row && frame.road[i][1] == col)
+				if (frame.road[i][0] == row && frame.road[i][1] == col) {
 					board.movePiece(frame.currow,frame.curcol, row, col);
+					frame.show = false;
+					//System.out.println(board.turn);
 					frame.update();
+				}
+					
 			}
 		}
 		frame.update();

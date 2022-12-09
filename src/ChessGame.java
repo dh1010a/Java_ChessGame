@@ -1,6 +1,6 @@
 public class ChessGame {
 	public static void main(String[] args) {
-        new ChessFrame(new ChessBoard());
+        new ChessFrame(new ChessBoard(), new Grave());
 
 	}
 }
