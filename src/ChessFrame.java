@@ -46,6 +46,8 @@ public class ChessFrame extends JFrame {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 button_board[row][col] = new BoardButton(board,this, row, col); // 버튼에는 색이 안들어감,,
+                if ((row + col) % 2 == 0)
+                	button_board[row][col].setBackground(color);
                 p.add(button_board[row][col]);
             }
     	}
@@ -92,24 +94,21 @@ public class ChessFrame extends JFrame {
 	public void showRoad() {
 		for(int i = 0;i < 8;i++) {
 			for(int j = 0;j < 8;j++) {
-				button_board[i][j].setText("");
+				if(board.getBoardPiece(i, j).getType() == "")
+					button_board[i][j].setIcon(null);
 			}
 		}
 		if(sum(road) > 0) {
 			for (int i = 0;i < 56;i++) {
 				if(road[i][0] + road[i][1] > 0) {
-					button_board[road[i][0]][road[i][1]].setText("go");
-					System.out.print(road[i][0] + " ");
-					System.out.print(" " +road[i][1]);
+					button_board[road[i][0]][road[i][1]].setIcon(Knights);
+					//System.out.print(road[i][0] + " ");
+					//System.out.print(" " +road[i][1]);
 
 				}
 			}
 		}
-		for(int i = 0;i < 8;i++) {
-			for(int j = 0;j < 8;j++) {
-				road[i][j] = 0;
-			}
-		}
+		
 	}
 	public void update() {
 		for (int r = 0;r < 8;r++) {
@@ -130,6 +129,5 @@ public class ChessFrame extends JFrame {
 					button_board[r][c].setIcon(null);
 			}
 		}
-		showRoad();
 	}
 }
