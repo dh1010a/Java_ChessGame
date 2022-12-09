@@ -40,8 +40,23 @@ public class BoardButton extends JButton implements ActionListener{
         }
 	}*/
 	public void actionPerformed(ActionEvent e) {
-		if (board.getBoardPiece(row, col).getType() != "")
-			board.calRoad(row, col);
-	}
-	
+		
+		if (board.getBoardPiece(row, col).getType() != "" && board.getBoardPiece(row, col).getPlayerNum() == board.turn) {
+			frame.road = board.calRoad(row, col);
+			frame.showRoad();
+			frame.show = true;
+
+		}
+		else {//movepiece에 update 써줄
+			if (board.getBoardPiece(row, col).getType() == "") {
+				for(int i = 0;i < 56;i++) {
+					if (frame.road[i][0] == row && frame.road[i][1] == col)
+						board.movePiece(frame.currow,frame.curcol, row, col);
+						frame.update();
+				}
+			}
+			frame.road = new int[56][2];
+		}
+	} 
+	  
 }
