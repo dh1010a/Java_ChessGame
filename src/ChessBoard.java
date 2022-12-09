@@ -291,15 +291,20 @@ public class ChessBoard {
 				road[0][1] = c;
 				idx++;
 			}
-			if (isMoveable(r+dr, c-1) && !board[r+dr][c-1].getType().equals("")) {
-				road[idx][0] = r+dr;
-				road[idx][1] = c;
-				idx++;
+			if (isMoveable(r+dr, c-1)) {
+				if(!board[r+dr][c-1].getType().equals("")){
+					
+					road[idx][0] = r+dr;
+					road[idx][1] = c-1;
+					idx++;
+				}
 			}
-			if (isMoveable(r+dr, c-1) && !board[r+dr][c+1].getType().equals("")) {
-				road[idx][0] = r+dr;
-				road[idx][1] = c+1;
-				idx++;
+			if (isMoveable(r+dr, c+1)) {
+				if(!board[r+dr][c+1].getType().equals("")) {
+					road[idx][0] = r+dr;
+					road[idx][1] = c+1;
+					idx++;					
+				}
 			}
 		}
 		return road;
@@ -313,14 +318,19 @@ public class ChessBoard {
 			turn = 1;
 	}
 	public void movePiece(int r1, int c1, int r2, int c2) {
-		if (board[r1][c1].getType().equals("")) {
-			board[r2][c2] = board[r1][c1];
-			board[r1][c1].refresh();
+		if (board[r2][c2].getType().equals("")) {
+			board[r2][c2].type = board[r1][c1].getType();
+			board[r2][c2].player = board[r1][c1].getPlayerNum();
+			board[r1][c1].type = "";
+			board[r1][c1].player = 0;
+			System.out.println(board[r2][c2].getType()+"입니다");
 		}
 		else {
 			killPiece(board[r2][c2], r2, c2);
-			board[r2][c2] = board[r1][c1];
-			board[r1][c1].refresh();
+			board[r2][c2].type = board[r1][c1].getType();
+			board[r2][c2].player = board[r1][c1].getPlayerNum();
+			board[r1][c1].type = "";
+			board[r1][c1].player = 0;
 		}
 	}
 	public void killPiece(BoardPiece b, int r, int c) {
@@ -356,5 +366,6 @@ public class ChessBoard {
 			JOptionPane.showMessageDialog(null, p1.getName() + "님 승리하셨습니다.");
 		else
 			JOptionPane.showMessageDialog(null, p2.getName() + "님 승리하셨습니다.");
+		
 	}
 }
