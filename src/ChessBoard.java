@@ -14,6 +14,7 @@ public class ChessBoard {
 		p1 = new Player(input, 1, true);
 		input = JOptionPane.showInputDialog("2번 플레이어의 이름을 입력해주세요");
 		p2 = new Player(input, 1, true);
+		grave = new Grave();
 		createBoard();
 		
 	}
@@ -282,13 +283,14 @@ public class ChessBoard {
 	      }
 		else if(tmp.getType().equals(piecename[5])) {
 			int dr = 0;
+			int flag = 0;
 			if (turn == 1) 
 				dr = -1;
 			else if (turn == 2)
 				dr = 1;
-			if (isMoveable(r+dr, c)) {
-				road[0][0] = r+dr;
-				road[0][1] = c;
+			if (isMoveable(r+dr, c) && board[r+dr][c].getType().equals("")) {
+				road[idx][0] = r+dr;
+				road[idx][1] = c;
 				idx++;
 			}
 			if (isMoveable(r+dr, c-1)) {
@@ -338,7 +340,6 @@ public class ChessBoard {
 			gameOver(b);
 		}
 		grave.pushGrave(b);
-		board[r][c].refresh();
 	}
 	public BoardPiece getBoardPiece(int r, int c) {
 		return board[r][c];

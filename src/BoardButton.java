@@ -34,7 +34,7 @@ public class BoardButton extends JButton implements ActionListener{
 			frame.currow = row;
 			frame.curcol = col;
 		}
-		if (board.getBoardPiece(row, col).getType() == "" && frame.show == true) {
+		if (frame.show == true) {
 			for(int i = 0;i < 56;i++) {
 				if (frame.road[i][0] == row && frame.road[i][1] == col)
 					board.movePiece(frame.currow,frame.curcol, row, col);
