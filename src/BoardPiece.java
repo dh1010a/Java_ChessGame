@@ -13,5 +13,9 @@ public class BoardPiece {
 	public String getType() {
 		return type;
 	}
+	public void refresh() {
+		player = 0;
+		type = "";
+	}
 	
 }

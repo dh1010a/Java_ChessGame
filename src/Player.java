@@ -10,10 +10,10 @@ public class Player {
 		turn = b;
 	}
 	
-	public boolean is_turn() {
+	public boolean isTurn() {
 		return turn;
 	}
-	public String get_name() {
+	public String getName() {
 		return name;
 	}
 }

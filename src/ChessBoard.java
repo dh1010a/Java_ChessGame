@@ -7,6 +7,7 @@ public class ChessBoard {
 	Player p2;
 	Grave grave;
 	int turn = 1;
+	int victory = 0;
 	
 	public ChessBoard() {
 		String input = JOptionPane.showInputDialog("1번 플레이어의 이름을 입력해주세요");
@@ -303,7 +304,57 @@ public class ChessBoard {
 		}
 		return road;
 	}
+	
+	public void changeTurn() {
+		if (turn == 1) {
+			turn = 2;
+		}
+		else
+			turn = 1;
+	}
+	public void movePiece(int r1, int c1, int r2, int c2) {
+		if (board[r1][c1].getType().equals("")) {
+			board[r2][c2] = board[r1][c1];
+			board[r1][c1].refresh();
+		}
+		else {
+			killPiece(board[r2][c2], r2, c2);
+			board[r2][c2] = board[r1][c1];
+			board[r1][c1].refresh();
+		}
+	}
+	public void killPiece(BoardPiece b, int r, int c) {
+		if (b.getType().equals("King")) {
+			gameOver(b);
+		}
+		grave.pushGrave(b);
+		board[r][c].refresh();
+	}
 	public BoardPiece getBoardPiece(int r, int c) {
 		return board[r][c];
+	}
+	public boolean checkCheckMate(int r, int c) {
+		int[][] road;
+		road = calRoad(r, c);
+		for (int i = 0; i < 56; i++) {
+			for (int j = 0; j < 2; j++) {
+				if (board[road[i][j]][road[i][j]].getType().equals("King")) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public void gameOver(BoardPiece b) {
+		if (b.getPlayerNum() == 1) {
+			victory = 1;
+		}
+		else {
+			victory = 2;
+		}
+		if (victory == 1)
+			JOptionPane.showMessageDialog(null, p1.getName() + "님 승리하셨습니다.");
+		else
+			JOptionPane.showMessageDialog(null, p2.getName() + "님 승리하셨습니다.");
 	}
 }
