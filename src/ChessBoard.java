@@ -58,7 +58,7 @@ public class ChessBoard {
 		int[][] road = new int[56][2];
 		for (int i=0;i < 56; i++)
 			for(int j=0; j<2; j++)
-				road[i][j] = 0;
+				road[i][j] = -1;
 		if (tmp.getType().equals(piecename[0])) {
 			if (isMoveable(r-1, c-1)) {
 				road[idx][0] = r-1;
@@ -146,140 +146,155 @@ public class ChessBoard {
 			return road;
 		}
 		else if (tmp.getType().equals(piecename[1])) {
-	    	  
-		  	  while(isMoveable(r + idx, c) && idx < 7) {
-	    		  road[8 * idx][0] = r + idx;
-	    		  road[8 * idx][1] = c;
-	    		  if (!board[r + idx][c].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+			for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c+i)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r + i][c+i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r - idx, c) && idx < 7) {
-	    		  road[8 * idx + 1][0] = r - idx;
-	    		  road[8 * idx + 1][1] = c;
-	    		  if (!board[r + idx][c].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c-i)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r+i][c-i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r, c + idx) && idx < 7) {
-	    		  road[8 * idx + 2][0] = r;
-	    		  road[8 * idx + 2][1] = c + idx;
-	    		  if (!board[r + idx][c].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c+i)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r - i][c+i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r, c - idx) && idx < 7) {
-	    		  road[8 * idx + 3][0] = r;
-	    		  road[8 * idx + 3][1] = c - idx;
-	    		  if (!board[r + idx][c].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c-i)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r-i][c-i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r + idx, c + idx) && idx < 7) {
-	    		  road[8 * idx + 4][0] = r + idx;
-	    		  road[8 * idx + 4][1] = c + idx;
-	    		  if (!board[r + idx][c + idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c;
+	    			  idx++;
+	    			  if (!board[r + i][c].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r - idx, c + idx) && idx < 7) {
-	    		  road[8 * idx + 5][0] = r - idx;
-	    		  road[8 * idx + 5][1] = c + idx;
-	    		  if (!board[r - idx][c + idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r, c+i)) {    			  
+	    			  road[idx][0] = r;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r][c+i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r + idx, c - idx) && idx < 7) {
-	    		  road[8 * idx + 6][0] = r + idx;
-	    		  road[8 * idx + 6][1] = c - idx;
-	    		  if (!board[r + idx][c - idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c;
+	    			  idx++;
+	    			  if (!board[r - i][c].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r - idx, c - idx) && idx < 7) {
-	    		  road[8 * idx + 7][0] = r - idx;
-	    		  road[8 * idx + 7][1] = c - idx;
-	    		  if (!board[r - idx][c - idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r, c-i)) {    			  
+	    			  road[idx][0] = r;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r][c-i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  
 	      }
 	      else if (tmp.getType().equals(piecename[2])) {
-	    	  	  while(isMoveable(r + idx, c) && idx < 7) {
-	        		  road[4 * idx][0] = r + idx;
-	        		  road[4 * idx][1] = c;
-	        		  if (!board[r + idx][c].getType().equals(""))
-	        			  break;
-	            	  idx++;  
-	        	  }
-	    		  idx = 0;
-	    		  while(isMoveable(r - idx, c) && idx < 7) {
-	        		  road[4 * idx + 1][0] = r - idx;
-	        		  road[4 * idx + 1][1] = c;
-	        		  if (!board[r + idx][c].getType().equals(""))
-	        			  break;
-	            	  idx++;  
-	        	  }
-	    		  idx = 0;
-	    		  while(isMoveable(r, c + idx) && idx < 7) {
-	        		  road[4 * idx + 2][0] = r;
-	        		  road[4 * idx + 2][1] = c + idx;
-	        		  if (!board[r + idx][c].getType().equals(""))
-	        			  break;
-	            	  idx++;  
-	        	  }
-	    		  idx = 0;
-	    		  while(isMoveable(r, c - idx) && idx < 7) {
-	        		  road[4 * idx + 3][0] = r;
-	        		  road[4 * idx + 3][1] = c - idx;
-	        		  if (!board[r + idx][c].getType().equals(""))
-	        			  break;
-	            	  idx++;  
-	        	  }
-	    		  idx = 0;
+	    	  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c;
+	    			  idx++;
+	    			  if (!board[r + i][c].getType().equals(""))
+	    				  break;
+	    		  }
+	    	  }
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r, c+i)) {    			  
+	    			  road[idx][0] = r;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r][c+i].getType().equals(""))
+	    				  break;
+	    		  }
+	    	  }
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c;
+	    			  idx++;
+	    			  if (!board[r - i][c].getType().equals(""))
+	    				  break;
+	    		  }
+	    	  }
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r, c-i)) {    			  
+	    			  road[idx][0] = r;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r][c-i].getType().equals(""))
+	    				  break;
+	    		  }
+	    	  }
 	      }
 	      else if (tmp.getType().equals(piecename[3])) {
-		  	  while(isMoveable(r + idx, c + idx) && idx < 7) {
-	    		  road[4 * idx][0] = r + idx;
-	    		  road[4 * idx][1] = c + idx;
-	    		  if (!board[r + idx][c + idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c+i)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r + i][c+i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r - idx, c + idx) && idx < 7) {
-	    		  road[4 * idx + 1][0] = r - idx;
-	    		  road[4 * idx + 1][1] = c + idx;
-	    		  if (!board[r - idx][c + idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r+i, c-i)) {    			  
+	    			  road[idx][0] = r+i;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r+i][c-i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r + idx, c - idx) && idx < 7) {
-	    		  road[4 * idx + 2][0] = r + idx;
-	    		  road[4 * idx + 2][1] = c - idx;
-	    		  if (!board[r + idx][c - idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c+i)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c+i;
+	    			  idx++;
+	    			  if (!board[r - i][c+i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
-			  while(isMoveable(r - idx, c - idx) && idx < 7) {
-	    		  road[4 * idx + 3][0] = r - idx;
-	    		  road[4 * idx + 3][1] = c - idx;
-	    		  if (!board[r - idx][c - idx].getType().equals(""))
-	    			  break;
-	        	  idx++;  
+	    	  for (int i = 0; i < 8; i++) {
+	    		  if(isMoveable(r-i, c-i)) {    			  
+	    			  road[idx][0] = r-i;
+	    			  road[idx][1] = c-i;
+	    			  idx++;
+	    			  if (!board[r-i][c-i].getType().equals(""))
+	    				  break;
+	    		  }
 	    	  }
-			  idx = 0;
 	      }
 		else if(tmp.getType().equals(piecename[5])) {
 			int dr = 0;
@@ -325,7 +340,7 @@ public class ChessBoard {
 			board[r2][c2].player = board[r1][c1].getPlayerNum();
 			board[r1][c1].type = "";
 			board[r1][c1].player = 0;
-			System.out.println(board[r2][c2].getType()+"입니다");
+			
 		}
 		else {
 			killPiece(board[r2][c2], r2, c2);
@@ -334,6 +349,8 @@ public class ChessBoard {
 			board[r1][c1].type = "";
 			board[r1][c1].player = 0;
 		}
+		changeTurn();
+		System.out.println(turn);
 	}
 	public void killPiece(BoardPiece b, int r, int c) {
 		if (b.getType().equals("King")) {
