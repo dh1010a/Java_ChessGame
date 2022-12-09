@@ -11,7 +11,6 @@ public class ChessFrame extends JFrame {
 	public ChessFrame(ChessBoard b) {
 		ImageIcon img = new ImageIcon("./img/pngwing.png");
 		ImageIcon background = new ImageIcon("./img/chessboard.png");
-
 		board = b;
         button_board = new BoardButton[8][8];
         Container c = getContentPane();

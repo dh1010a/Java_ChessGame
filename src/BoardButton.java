@@ -13,8 +13,14 @@ public class BoardButton extends JButton implements ActionListener{
 		frame = f;
 		this.row = row;
 	    this.col = col;
-	    this.setBackground(Color.blue);
-		addActionListener(this); 
+	    if ((row + col) % 2 == 0){
+        	this.setBackground(Color.black);
+        	System.out.println("255");
+        }
+        else if ((row + col) % 2 == 1){
+        	this.setBackground(Color.white);
+        	System.out.println("0");
+        }		addActionListener(this); 
 	}
 	public int row() {
 		return row;
