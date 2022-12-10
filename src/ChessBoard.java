@@ -349,8 +349,14 @@ public class ChessBoard {
 			board[r1][c1].type = "";
 			board[r1][c1].player = 0;
 		}
+		for(int i = 0;i < 8;i++) {
+			for (int j = 0;j < 8;j++) {
+				if(board[i][j].getType() == "road")
+					board[i][j].type = "";
+			}
+		}
 		changeTurn();
-		System.out.println(turn);
+		//System.out.println(turn);
 	}
 	public void killPiece(BoardPiece b, int r, int c) {
 		if (b.getType().equals("King")) {

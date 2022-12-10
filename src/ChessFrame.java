@@ -13,30 +13,34 @@ public class ChessFrame extends JFrame {
 	public boolean show = true;
 	public int currow = 0;
 	public int curcol = 0;
-	ImageIcon img1 = new ImageIcon("./img/horse.png");
+	ImageIcon img0 = new ImageIcon("./img/road.png");
+	Image im0 = img0.getImage();
+	Image updateImg0 = im0.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon canroad = new ImageIcon(updateImg0);
+	ImageIcon img1 = new ImageIcon("./img/horse1.png");
 	Image im1 = img1.getImage();
 	Image updateImg1 = im1.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon Knights = new ImageIcon(updateImg1);
-	ImageIcon img2 = new ImageIcon("./img/lock.png");
+	ImageIcon Knights1 = new ImageIcon(updateImg1);
+	ImageIcon img2 = new ImageIcon("./img/lock1.png");
 	Image im2 = img2.getImage();
 	Image updateImg2 = im2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon Rooks = new ImageIcon(updateImg2);
-	ImageIcon img3 = new ImageIcon("./img/porn.png");
+	ImageIcon Rooks1 = new ImageIcon(updateImg2);
+	ImageIcon img3 = new ImageIcon("./img/porn1.png");
 	Image im3 = img3.getImage();
 	Image updateImg3 = im3.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon Pawns = new ImageIcon(updateImg3);
-	ImageIcon img4 = new ImageIcon("./img/bs.png");
+	ImageIcon Pawns1 = new ImageIcon(updateImg3);
+	ImageIcon img4 = new ImageIcon("./img/bs1.png");
 	Image im4 = img4.getImage();
 	Image updateImg4 = im4.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon Bishops = new ImageIcon(updateImg4);
-	ImageIcon img5 = new ImageIcon("./img/king.png");
+	ImageIcon Bishops1 = new ImageIcon(updateImg4);
+	ImageIcon img5 = new ImageIcon("./img/king1.png");
 	Image im5 = img5.getImage();
 	Image updateImg5 = im5.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon King = new ImageIcon(updateImg5);
-	ImageIcon img6 = new ImageIcon("./img/queen.png");
+	ImageIcon King1 = new ImageIcon(updateImg5);
+	ImageIcon img6 = new ImageIcon("./img/queen1.png");
 	Image im6 = img6.getImage();
 	Image updateImg6 = im6.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	ImageIcon Queen = new ImageIcon(updateImg6);
+	ImageIcon Queen1 = new ImageIcon(updateImg6);
 	public ChessFrame(ChessBoard b, Grave gv) {
 		board = b;
 		grave = gv;
@@ -78,45 +82,56 @@ public class ChessFrame extends JFrame {
 		int sum = 0;
 		for(int i = 0;i < 56;i++) {
 			for(int j = 0;j < 2;j++) {
-				sum += r[i][j];
+				if (r[i][j] != -1) {
+					sum += r[i][j];
+					System.out.println(r[i][j]);
+				}
 			}
 		}
+		System.out.println(sum);
 		return sum;
 	}
 	public void showRoad() {
+		button_board[3][3].setIcon(canroad);
+
 		for(int i = 0;i < 8;i++) {
 			for(int j = 0;j < 8;j++) {
 				if(board.getBoardPiece(i, j).getType() == "")
 					button_board[i][j].setIcon(null);
 			}
 		}
-		if(sum(road) > 0) {
-			for (int i = 0;i < 56;i++) {
-				if(road[i][0] + road[i][1] > 0) {
-					button_board[road[i][0]][road[i][1]].setIcon(Knights);
-					//System.out.print(road[i][0] + " ");
-					//System.out.print(" " +road[i][1]);
-
-				}
+		for (int i = 0;i < 56;i++) {
+			if(road[i][0] + road[i][1] > 0) {
+				board.board[road[i][0]][road[i][1]].type = "road";
 			}
-		}
-		
+		}		
 	}
 	public void update() {
 		for (int r = 0;r < 8;r++) {
 			for (int c = 0;c < 8;c++) {
-				if (board.getBoardPiece(r, c).getType() == "King")
-				button_board[r][c].setIcon(King);
+				if (board.getBoardPiece(r, c).getType() == "King") {
+					button_board[r][c].setIcon(King1);
+
+					/*if(board.getBoardPiece(r, c).getPlayerNum() == 1) {
+						button_board[r][c].setIcon(King1);
+					}
+					else {
+						button_board[r][c].setIcon(King2);
+					}*/
+				}
 				else if (board.getBoardPiece(r, c).getType() == "Queen")
-					button_board[r][c].setIcon(Queen);
+					button_board[r][c].setIcon(Queen1);
 				else if (board.getBoardPiece(r, c).getType() == "Rooks")
-					button_board[r][c].setIcon(Rooks);
+					button_board[r][c].setIcon(Rooks1);
 				else if (board.getBoardPiece(r, c).getType() == "Bishops")
-					button_board[r][c].setIcon(Bishops);
+					button_board[r][c].setIcon(Bishops1);
 				else if (board.getBoardPiece(r, c).getType() == "Knights")
-					button_board[r][c].setIcon(Knights);
+					button_board[r][c].setIcon(Knights1);
 				else if (board.getBoardPiece(r, c).getType() == "Pawns")
-					button_board[r][c].setIcon(Pawns);
+					button_board[r][c].setIcon(Pawns1);
+				else if (board.getBoardPiece(r, c).getType() == "road") {
+					button_board[r][c].setIcon(canroad);
+				}
 				else if (board.getBoardPiece(r, c).getType() == "")
 					button_board[r][c].setIcon(null);
 			}
