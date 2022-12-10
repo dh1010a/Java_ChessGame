@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.awt.*;
@@ -41,6 +42,30 @@ public class ChessFrame extends JFrame {
 	Image im6 = img6.getImage();
 	Image updateImg6 = im6.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 	ImageIcon Queen1 = new ImageIcon(updateImg6);
+	ImageIcon img11 = new ImageIcon("./img/horse2.png");
+	Image im11 = img11.getImage();
+	Image updateImg11 = im11.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon Knights2 = new ImageIcon(updateImg11);
+	ImageIcon img22 = new ImageIcon("./img/lock2.png");
+	Image im22 = img22.getImage();
+	Image updateImg22 = im22.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon Rooks2 = new ImageIcon(updateImg22);
+	ImageIcon img33 = new ImageIcon("./img/porn2.png");
+	Image im33 = img33.getImage();
+	Image updateImg33 = im33.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon Pawns2 = new ImageIcon(updateImg33);
+	ImageIcon img44 = new ImageIcon("./img/bs2.png");
+	Image im44 = img44.getImage();
+	Image updateImg44 = im44.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon Bishops2 = new ImageIcon(updateImg44);
+	ImageIcon img55 = new ImageIcon("./img/king2.png");
+	Image im55 = img55.getImage();
+	Image updateImg55 = im55.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon King2 = new ImageIcon(updateImg55);
+	ImageIcon img66 = new ImageIcon("./img/queen2.png");
+	Image im66 = img66.getImage();
+	Image updateImg66 = im66.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	ImageIcon Queen2 = new ImageIcon(updateImg66);
 	public ChessFrame(ChessBoard b, Grave gv) {
 		board = b;
 		grave = gv;
@@ -64,7 +89,8 @@ public class ChessFrame extends JFrame {
         JPanel g1 = new JPanel(new GridLayout(8,2));
         JPanel g2 = new JPanel(new GridLayout(8,2));
         /*for(int i = 0;i < 16;i++) {
-        	g1.add(grave.p1[i]);
+        	if (grave.p1[i].getType() == "Pawns")
+        	g1.add(new JLabel().setIcon(Pawns1));
         }*/
         g.add(g1);
         g.add(g2);
@@ -110,25 +136,42 @@ public class ChessFrame extends JFrame {
 		for (int r = 0;r < 8;r++) {
 			for (int c = 0;c < 8;c++) {
 				if (board.getBoardPiece(r, c).getType() == "King") {
-					button_board[r][c].setIcon(King1);
-
-					/*if(board.getBoardPiece(r, c).getPlayerNum() == 1) {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
 						button_board[r][c].setIcon(King1);
-					}
-					else {
+					else 
 						button_board[r][c].setIcon(King2);
-					}*/
 				}
-				else if (board.getBoardPiece(r, c).getType() == "Queen")
-					button_board[r][c].setIcon(Queen1);
-				else if (board.getBoardPiece(r, c).getType() == "Rooks")
-					button_board[r][c].setIcon(Rooks1);
-				else if (board.getBoardPiece(r, c).getType() == "Bishops")
-					button_board[r][c].setIcon(Bishops1);
-				else if (board.getBoardPiece(r, c).getType() == "Knights")
-					button_board[r][c].setIcon(Knights1);
-				else if (board.getBoardPiece(r, c).getType() == "Pawns")
-					button_board[r][c].setIcon(Pawns1);
+				else if (board.getBoardPiece(r, c).getType() == "Queen") {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
+						button_board[r][c].setIcon(Queen1);
+					else 
+						button_board[r][c].setIcon(Queen2);
+				}
+					
+				else if (board.getBoardPiece(r, c).getType() == "Rooks") {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
+						button_board[r][c].setIcon(Rooks1);
+					else 
+						button_board[r][c].setIcon(Rooks2);
+				}
+				else if (board.getBoardPiece(r, c).getType() == "Bishops") {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
+						button_board[r][c].setIcon(Bishops1);
+					else 
+						button_board[r][c].setIcon(Bishops2);
+				}
+				else if (board.getBoardPiece(r, c).getType() == "Knights") {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
+						button_board[r][c].setIcon(Knights1);
+					else 
+						button_board[r][c].setIcon(Knights2);
+				}
+				else if (board.getBoardPiece(r, c).getType() == "Pawns") {
+					if(board.getBoardPiece(r, c).getPlayerNum() == 1) 
+						button_board[r][c].setIcon(Pawns1);
+					else 
+						button_board[r][c].setIcon(Pawns2);
+				}
 				else if (board.getBoardPiece(r, c).getType() == "road") {
 					button_board[r][c].setIcon(canroad);
 				}
