@@ -7,6 +7,7 @@ public class ChessBoard {
 	Player p2;
 	Grave grave;
 	int turn = 1;
+	int first = 0;
 	int victory = 0;
 	
 	public ChessBoard() {
@@ -146,7 +147,7 @@ public class ChessBoard {
 			return road;
 		}
 		else if (tmp.getType().equals(piecename[1])) {
-			for (int i = 0; i < 8; i++) {
+			for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c+i)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c+i;
@@ -154,8 +155,10 @@ public class ChessBoard {
 	    			  if (!board[r + i][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c-i)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c-i;
@@ -163,8 +166,10 @@ public class ChessBoard {
 	    			  if (!board[r+i][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c+i)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c+i;
@@ -172,8 +177,10 @@ public class ChessBoard {
 	    			  if (!board[r - i][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c-i)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c-i;
@@ -181,8 +188,10 @@ public class ChessBoard {
 	    			  if (!board[r-i][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c;
@@ -190,8 +199,10 @@ public class ChessBoard {
 	    			  if (!board[r + i][c].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r, c+i)) {    			  
 	    			  road[idx][0] = r;
 	    			  road[idx][1] = c+i;
@@ -199,8 +210,10 @@ public class ChessBoard {
 	    			  if (!board[r][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c;
@@ -208,8 +221,10 @@ public class ChessBoard {
 	    			  if (!board[r - i][c].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r, c-i)) {    			  
 	    			  road[idx][0] = r;
 	    			  road[idx][1] = c-i;
@@ -217,20 +232,25 @@ public class ChessBoard {
 	    			  if (!board[r][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
 	      }
 	      else if (tmp.getType().equals(piecename[2])) {
 	    	  
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c;
-	    			  idx++;
+	    			  System.out.println(i);
+	    			  idx++;  
 	    			  if (!board[r + i][c].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r, c+i)) {    			  
 	    			  road[idx][0] = r;
 	    			  road[idx][1] = c+i;
@@ -238,8 +258,10 @@ public class ChessBoard {
 	    			  if (!board[r][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c;
@@ -247,8 +269,10 @@ public class ChessBoard {
 	    			  if (!board[r - i][c].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r, c-i)) {    			  
 	    			  road[idx][0] = r;
 	    			  road[idx][1] = c-i;
@@ -256,10 +280,12 @@ public class ChessBoard {
 	    			  if (!board[r][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
 	      }
 	      else if (tmp.getType().equals(piecename[3])) {
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c+i)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c+i;
@@ -267,8 +293,10 @@ public class ChessBoard {
 	    			  if (!board[r + i][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r+i, c-i)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c-i;
@@ -276,8 +304,10 @@ public class ChessBoard {
 	    			  if (!board[r+i][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c+i)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c+i;
@@ -285,8 +315,10 @@ public class ChessBoard {
 	    			  if (!board[r - i][c+i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
-	    	  for (int i = 0; i < 8; i++) {
+	    	  for (int i = 1; i < 8; i++) {
 	    		  if(isMoveable(r-i, c-i)) {    			  
 	    			  road[idx][0] = r-i;
 	    			  road[idx][1] = c-i;
@@ -294,15 +326,22 @@ public class ChessBoard {
 	    			  if (!board[r-i][c-i].getType().equals(""))
 	    				  break;
 	    		  }
+	    		  else 
+	    			  break;
 	    	  }
 	      }
 		else if(tmp.getType().equals(piecename[5])) {
 			int dr = 0;
-			int flag = 0;
 			if (turn == 1) 
-				dr = -1;
+				if (first < 2)
+					dr = -2;
+				else
+					dr = -1;
 			else if (turn == 2)
-				dr = 1;
+				if (first < 2)
+					dr = 2;
+				else
+					dr = 1;
 			if (isMoveable(r+dr, c) && board[r+dr][c].getType().equals("")) {
 				road[idx][0] = r+dr;
 				road[idx][1] = c;
@@ -355,6 +394,7 @@ public class ChessBoard {
 					board[i][j].type = "";
 			}
 		}
+		first++;
 		changeTurn();
 		//System.out.println(turn);
 	}

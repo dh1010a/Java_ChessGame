@@ -15,7 +15,7 @@ public class Grave {
 			index1++;
 		}
 		else {
-			p1[index2] = b;
+			p2[index2] = b;
 			index2++;
 		}
 	}
