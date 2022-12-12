@@ -355,6 +355,7 @@ public class ChessBoard {
 					idx++;
 				}
 			}
+			dr2 = 0;
 			if (isMoveable(r+dr, c-1)) {
 				if(!board[r+dr][c-1].getType().equals("")){
 					
@@ -403,6 +404,9 @@ public class ChessBoard {
 			}
 		}
 		first++;
+		if (checkCheckMate(r2, c2)) {
+			JOptionPane.showMessageDialog(null, "CheckMate!");
+		}
 		changeTurn();
 		//System.out.println(turn);
 	}
@@ -416,14 +420,16 @@ public class ChessBoard {
 		return board[r][c];
 	}
 	public boolean checkCheckMate(int r, int c) {
-		int[][] road;
-		road = calRoad(r, c);
+		int[][] rb;
+		rb = new int[56][2];
+		rb = calRoad(r,c);
 		for (int i = 0; i < 56; i++) {
-			for (int j = 0; j < 2; j++) {
-				if (board[road[i][j]][road[i][j]].getType().equals("King")) {
+			if(rb[i][0] >= 0 && rb[i][0] >= 0) {
+				if (board[rb[i][0]][rb[i][1]].getType().equals("King")) {
 					return true;
-				}
+				}				
 			}
+			
 		}
 		return false;
 	}
