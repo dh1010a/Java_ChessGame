@@ -45,15 +45,13 @@ public class BoardButton extends JButton implements ActionListener{
 				if (frame.road[i][0] == row && frame.road[i][1] == col) {
 					board.movePiece(frame.currow,frame.curcol, row, col);
 					frame.show = false;
-					//System.out.println(board.turn);
 					frame.update();
 				}
 					
 			}
 		}
 		frame.update();
-
-			//frame.road = new int[56][2];		
+	
 	} 
 	  
 }

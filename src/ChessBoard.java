@@ -381,7 +381,7 @@ public class ChessBoard {
 		if (turn == 1) {
 			turn = 2;
 		}
-		else
+		else if (turn == 2)
 			turn = 1;
 	}
 	public void movePiece(int r1, int c1, int r2, int c2) {
@@ -446,6 +446,8 @@ public class ChessBoard {
 			JOptionPane.showMessageDialog(null, p1.getName() + "님 승리하셨습니다.");
 		else
 			JOptionPane.showMessageDialog(null, p2.getName() + "님 승리하셨습니다.");
-		
+		p1.turn = false;
+		p2.turn = false;
+		turn = 0;
 	}
 }
