@@ -332,20 +332,28 @@ public class ChessBoard {
 	      }
 		else if(tmp.getType().equals(piecename[5])) {
 			int dr = 0;
-			if (turn == 1) 
-				if (first < 2)
-					dr = -2;
-				else
-					dr = -1;
-			else if (turn == 2)
-				if (first < 2)
-					dr = 2;
-				else
-					dr = 1;
+			int dr2 = 0;
+			if (turn == 1) {
+				if (r == 6)
+					dr2 = -2;
+				dr = -1;				
+			}
+			else if (turn == 2){
+				if (r == 1)
+					dr2 = 2;
+				dr = 1;				
+			}
 			if (isMoveable(r+dr, c) && board[r+dr][c].getType().equals("")) {
 				road[idx][0] = r+dr;
 				road[idx][1] = c;
 				idx++;
+			}
+			if (dr2 != 0) {
+				if (isMoveable(r+dr2, c) && board[r+dr2][c].getType().equals("")) {
+					road[idx][0] = r+dr2;
+					road[idx][1] = c;
+					idx++;
+				}
 			}
 			if (isMoveable(r+dr, c-1)) {
 				if(!board[r+dr][c-1].getType().equals("")){
