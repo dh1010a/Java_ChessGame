@@ -118,12 +118,11 @@ public class ChessFrame extends JFrame {
 		return sum;
 	}
 	public void showRoad() {
-		button_board[3][3].setIcon(canroad);
 
 		for(int i = 0;i < 8;i++) {
 			for(int j = 0;j < 8;j++) {
-				if(board.getBoardPiece(i, j).getType() == "")
-					button_board[i][j].setIcon(null);
+				if(board.getBoardPiece(i, j).getType() == "" || board.getBoardPiece(i, j).getType() == "road" )
+					board.board[i][j].type = "";
 			}
 		}
 		for (int i = 0;i < 56;i++) {
@@ -131,7 +130,8 @@ public class ChessFrame extends JFrame {
 				if(board.getBoardPiece(road[i][0], road[i][1]).getType() == "")
 					board.board[road[i][0]][road[i][1]].type = "road";
 			}
-		}		
+		}
+		
 	}
 	public void update() {
 		for (int r = 0;r < 8;r++) {
@@ -174,6 +174,9 @@ public class ChessFrame extends JFrame {
 						button_board[r][c].setIcon(Pawns2);
 				}
 				else if (board.getBoardPiece(r, c).getType() == "road") {
+					System.out.println(r);
+					System.out.println(c  + " ");
+
 					button_board[r][c].setIcon(canroad);
 				}
 				else if (board.getBoardPiece(r, c).getType() == "")
