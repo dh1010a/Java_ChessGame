@@ -330,9 +330,11 @@ public class ChessBoard {
 	    			  break;
 	    	  }
 	      }
+		
 		else if(tmp.getType().equals(piecename[5])) {
 			int dr = 0;
 			int dr2 = 0;
+			idx = 0;
 			if (turn == 1) {
 				if (r == 6)
 					dr2 = -2;

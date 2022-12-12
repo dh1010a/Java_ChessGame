@@ -28,6 +28,12 @@ public class BoardButton extends JButton implements ActionListener{
 		//System.out.println(board.getBoardPiece(row, col).getType());
 
 		if (board.getBoardPiece(row, col).getType() != "" && board.getBoardPiece(row, col).getPlayerNum() == board.turn) {
+			for(int i = 0;i < 8;i++) {
+				for(int j = 0;j < 8;j++) {
+					if(board.getBoardPiece(i, j).getType() == "" || board.getBoardPiece(i, j).getType() == "road" )
+						board.board[i][j].type = "";
+				}
+			}
 			frame.road = board.calRoad(row, col);
 			frame.showRoad();
 			frame.show = true;

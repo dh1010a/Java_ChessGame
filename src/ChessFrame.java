@@ -126,6 +126,7 @@ public class ChessFrame extends JFrame {
 			}
 		}
 		for (int i = 0;i < 56;i++) {
+			System.out.println(road[i][0] + " " + road[i][1]);
 			if(road[i][0] + road[i][1] > 0) {
 				if(board.getBoardPiece(road[i][0], road[i][1]).getType() == "")
 					board.board[road[i][0]][road[i][1]].type = "road";
