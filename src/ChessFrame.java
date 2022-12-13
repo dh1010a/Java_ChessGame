@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.awt.*;
@@ -83,39 +84,14 @@ public class ChessFrame extends JFrame {
                 p.add(button_board[row][col]);
             }
     	}
-        JPanel g = new JPanel(new GridLayout(2,1));
-        g.setLayout(new BoxLayout(g,BoxLayout.Y_AXIS));
-        
-        JPanel g1 = new JPanel(new GridLayout(8,2));
-        JPanel g2 = new JPanel(new GridLayout(8,2));
-        /*for(int i = 0;i < 16;i++) {
-        	if (grave.p1[i].getType() == "Pawns")
-        	g1.add(new JLabel().setIcon(Pawns1));
-        }*/
-        g.add(g1);
-        g.add(g2);
 
         c.add(p,BorderLayout.CENTER);
-        c.add(g, BorderLayout.EAST);
         setTitle("Chess Game");
         setSize(600,600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         update();
 
-	}
-	int sum(int r[][]) {
-		int sum = 0;
-		for(int i = 0;i < 56;i++) {
-			for(int j = 0;j < 2;j++) {
-				if (r[i][j] != -1) {
-					sum += r[i][j];
-					System.out.println(r[i][j]);
-				}
-			}
-		}
-		System.out.println(sum);
-		return sum;
 	}
 	public void showRoad() {
 
@@ -182,6 +158,17 @@ public class ChessFrame extends JFrame {
 				}
 				else if (board.getBoardPiece(r, c).getType() == "")
 					button_board[r][c].setIcon(null);
+			}
+		}
+		if(board.victory != 0) {
+			int input = JOptionPane.showConfirmDialog(null, "다시 시작하시겠습니까?", "Game over",
+					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+			if (input == 0) {
+				board.victory = 0;
+				grave.index1 = 0;
+				grave.index2 = 0;
+				board.createBoard();
+				update();
 			}
 		}
 	}

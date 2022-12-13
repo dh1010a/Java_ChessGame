@@ -447,7 +447,8 @@ public class ChessBoard {
 		else
 			JOptionPane.showMessageDialog(null, p2.getName() + "님 승리하셨습니다.");
 		p1.turn = false;
-		p2.turn = false;
-		turn = 0;
-	}
+		p2.turn = true;
+		turn = 2;
+		}
+	
 }

@@ -24,9 +24,6 @@ public class BoardButton extends JButton implements ActionListener{
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println(frame.show);
-		//System.out.println(board.getBoardPiece(row, col).getType());
-
 		if (board.getBoardPiece(row, col).getType() != "" && board.getBoardPiece(row, col).getPlayerNum() == board.turn) {
 			for(int i = 0;i < 8;i++) {
 				for(int j = 0;j < 8;j++) {
@@ -47,11 +44,9 @@ public class BoardButton extends JButton implements ActionListener{
 					frame.show = false;
 					frame.update();
 				}
-					
 			}
 		}
 		frame.update();
-	
 	} 
 	  
 }

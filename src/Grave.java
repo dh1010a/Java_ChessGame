@@ -2,8 +2,8 @@
 public class Grave {
 	BoardPiece[] p1;
 	BoardPiece[] p2;
-	private int index1=0;
-	private int index2=0;
+	public int index1=0;
+	public int index2=0;
 	
 	public Grave() {
 		p1 = new BoardPiece[16];
