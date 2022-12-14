@@ -242,7 +242,6 @@ public class ChessBoard {
 	    		  if(isMoveable(r+i, c)) {    			  
 	    			  road[idx][0] = r+i;
 	    			  road[idx][1] = c;
-	    			  System.out.println(i);
 	    			  idx++;  
 	    			  if (!board[r + i][c].getType().equals(""))
 	    				  break;
@@ -410,7 +409,6 @@ public class ChessBoard {
 			JOptionPane.showMessageDialog(null, "CheckMate!");
 		}
 		changeTurn();
-		//System.out.println(turn);
 	}
 	public void killPiece(BoardPiece b, int r, int c) {
 		if (b.getType().equals("King")) {

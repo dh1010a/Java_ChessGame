@@ -102,7 +102,6 @@ public class ChessFrame extends JFrame {
 			}
 		}
 		for (int i = 0;i < 56;i++) {
-			System.out.println(road[i][0] + " " + road[i][1]);
 			if(road[i][0] + road[i][1] > 0) {
 				if(board.getBoardPiece(road[i][0], road[i][1]).getType() == "")
 					board.board[road[i][0]][road[i][1]].type = "road";
@@ -151,8 +150,6 @@ public class ChessFrame extends JFrame {
 						button_board[r][c].setIcon(Pawns2);
 				}
 				else if (board.getBoardPiece(r, c).getType() == "road") {
-					System.out.println(r);
-					System.out.println(c  + " ");
 
 					button_board[r][c].setIcon(canroad);
 				}
